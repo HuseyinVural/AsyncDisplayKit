@@ -1695,6 +1695,11 @@ static NSString * const kCellReuseIdentifier = @"_ASTableViewCell";
   }
 }
 
+- (CGRect)dataController:(ASDataController *)dataController rectForRowAtIndexPath:(NSIndexPath *)indexPath
+{
+  return [self rectForRowAtIndexPath:indexPath];
+}
+
 #pragma mark - ASDataControllerEnvironmentDelegate
 
 - (id<ASTraitEnvironment>)dataControllerEnvironment
