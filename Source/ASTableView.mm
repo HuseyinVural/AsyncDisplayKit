@@ -1695,7 +1695,7 @@ static NSString * const kCellReuseIdentifier = @"_ASTableViewCell";
   }
 }
 
-- (CGRect)dataController:(ASDataController *)dataController committedSizeForElement:(nonnull ASCollectionElement *)element
+- (CGSize)dataController:(ASDataController *)dataController committedSizeForElement:(nonnull ASCollectionElement *)element
 {
   NSIndexPath *indexPath = [self indexPathForNode:element.node];
   CGRect rect = [self rectForRowAtIndexPath:indexPath];
@@ -1708,7 +1708,7 @@ static NSString * const kCellReuseIdentifier = @"_ASTableViewCell";
     rect.size.height -= 1.0 / ASScreenScale();
   }
   
-  return rect;
+  return rect.size;
 }
 
 #pragma mark - ASDataControllerEnvironmentDelegate

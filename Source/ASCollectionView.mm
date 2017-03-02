@@ -1563,10 +1563,10 @@ static NSString * const kReuseIdentifier = @"_ASCollectionReuseIdentifier";
   }
 }
 
-- (CGRect)dataController:(ASDataController *)dataController committedSizeForElement:(nonnull ASCollectionElement *)element
+- (CGSize)dataController:(ASDataController *)dataController committedSizeForElement:(nonnull ASCollectionElement *)element
 {
   NSIndexPath *indexPath = [self indexPathForNode:element.node];
-  return [self layoutAttributesForItemAtIndexPath:indexPath].frame;
+  return [self layoutAttributesForItemAtIndexPath:indexPath].size;
 }
 
 - (id<ASTraitEnvironment>)dataControllerEnvironment

@@ -67,9 +67,9 @@ extern NSString * const ASCollectionInvalidUpdateException;
 - (NSUInteger)numberOfSectionsInDataController:(ASDataController *)dataController;
 
 /**
- Fetch the rect of a cell for a given collection eleement
+ Fetch the size of a given collection element
  */
-- (CGRect)dataController:(ASDataController *)dataController committedSizeForElement:(ASCollectionElement *)element;
+- (CGSize)dataController:(ASDataController *)dataController committedSizeForElement:(nonnull ASCollectionElement *)element;
 
 @optional
 
