@@ -1695,9 +1695,20 @@ static NSString * const kCellReuseIdentifier = @"_ASTableViewCell";
   }
 }
 
-- (CGRect)dataController:(ASDataController *)dataController rectForRowAtIndexPath:(NSIndexPath *)indexPath
+- (CGRect)dataController:(ASDataController *)dataController committedSizeForElement:(nonnull ASCollectionElement *)element
 {
-  return [self rectForRowAtIndexPath:indexPath];
+  NSIndexPath *indexPath = [self indexPathForNode:element.node];
+  CGRect rect = [self rectForRowAtIndexPath:indexPath];
+  
+  /**
+   * Weirdly enough, Apple expects the return value here in tableView:heightForRowAtIndexPath: to _include_ the height
+   * of the separator, if there is one! So if rectForRow would return 44.0 we need to use 43.5.
+   */
+  if (self.separatorStyle != UITableViewCellSeparatorStyleNone) {
+    rect.size.height -= 1.0 / ASScreenScale();
+  }
+  
+  return rect;
 }
 
 #pragma mark - ASDataControllerEnvironmentDelegate

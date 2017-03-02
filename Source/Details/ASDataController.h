@@ -29,6 +29,7 @@ NS_ASSUME_NONNULL_BEGIN
 @class ASCellNode;
 @class ASDataController;
 @class ASElementMap;
+@class ASCollectionElement;
 @class _ASHierarchyChangeSet;
 @protocol ASTraitEnvironment;
 @protocol ASSectionContext;
@@ -66,9 +67,9 @@ extern NSString * const ASCollectionInvalidUpdateException;
 - (NSUInteger)numberOfSectionsInDataController:(ASDataController *)dataController;
 
 /**
- Fetch the rect of a cell for at a given index path
+ Fetch the rect of a cell for a given collection eleement
  */
-- (CGRect)dataController:(ASDataController *)dataController rectForRowAtIndexPath:(NSIndexPath *)indexPath;
+- (CGRect)dataController:(ASDataController *)dataController committedSizeForElement:(ASCollectionElement *)element;
 
 @optional
 
