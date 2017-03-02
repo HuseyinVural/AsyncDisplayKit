@@ -32,6 +32,7 @@
 #import <AsyncDisplayKit/ASSectionContext.h>
 #import <AsyncDisplayKit/ASCollectionView+Undeprecated.h>
 #import <AsyncDisplayKit/_ASHierarchyChangeSet.h>
+#import <AsyncDisplayKit/CoreGraphics+ASConvenience.h>
 
 /**
  * A macro to get self.collectionNode and assign it to a local variable, or return
@@ -1567,6 +1568,15 @@ static NSString * const kReuseIdentifier = @"_ASCollectionReuseIdentifier";
 {
   NSIndexPath *indexPath = [self indexPathForNode:element.node];
   return [self layoutAttributesForItemAtIndexPath:indexPath].size;
+}
+
+- (BOOL)dataController:(ASDataController *)dataController presentedSizeForElement:(ASCollectionElement *)element matchesSize:(CGSize)size
+{
+  NSIndexPath *indexPath = [self indexPathForNode:element.node];
+  UICollectionViewLayoutAttributes *attributes = [self layoutAttributesForItemAtIndexPath:indexPath];
+  CGRect rect = attributes.frame;
+  return CGSizeEqualToSizeWithIn(rect.size, size, FLT_EPSILON);
+  
 }
 
 - (id<ASTraitEnvironment>)dataControllerEnvironment

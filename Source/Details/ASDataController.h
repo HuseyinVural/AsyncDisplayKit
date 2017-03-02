@@ -67,9 +67,9 @@ extern NSString * const ASCollectionInvalidUpdateException;
 - (NSUInteger)numberOfSectionsInDataController:(ASDataController *)dataController;
 
 /**
- Fetch the size of a given collection element
+ Returns if the collection element size matches a given size
  */
-- (CGSize)dataController:(ASDataController *)dataController committedSizeForElement:(nonnull ASCollectionElement *)element;
+- (BOOL)dataController:(ASDataController *)dataController presentedSizeForElement:(ASCollectionElement *)element matchesSize:(CGSize)size;
 
 @optional
 
